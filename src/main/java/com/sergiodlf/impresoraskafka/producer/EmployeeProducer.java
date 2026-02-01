@@ -1,4 +1,4 @@
-package com.sergiodlf.impresoraskafka.profucer;
+package com.sergiodlf.impresoraskafka.producer;
 
 import java.util.Properties;
 
@@ -34,7 +34,7 @@ public class EmployeeProducer {
 		props.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
 
 		try (KafkaProducer<String, String> producer = new KafkaProducer<>(props)) {
-			// key = sender (sirve para particionar si más adelante quieres)
+			// key = sender
 			ProducerRecord<String, String> record = new ProducerRecord<>(AppConfig.TOPIC_REQUESTS, sender, json);
 			producer.send(record);
 			producer.flush();

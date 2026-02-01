@@ -58,8 +58,7 @@ public class PrinterConsumer {
 				for (ConsumerRecord<String, String> r : records) {
 					PrintPage page = JsonUtil.fromJson(r.value(), PrintPage.class);
 
-					// Simulación de impresión: guardo cada página como archivo .json (o .txt si
-					// prefieres)
+					// Simulación de impresión: guardo cada página como archivo .json
 					String fileName = safe(page.titulo) + "_p" + page.pageNumber + "-of-" + page.totalPages + ".json";
 					String path = printerDir + "/" + fileName;
 
